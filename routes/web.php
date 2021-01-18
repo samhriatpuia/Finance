@@ -24,5 +24,5 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DepartmentController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function () { 
-    Route::resource('departments',ProductController::class);
+    Route::resource('departments',DepartmentController::class);
 });

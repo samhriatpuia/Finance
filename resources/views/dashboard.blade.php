@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="container mt-3 mb-5">
-                    <button type="button" class="btn btn-primary btn-sm mb-3 float-right">New Department</button>
+                    <a class="btn btn-primary btn-sm mb-3 float-right" href="{{ route('departments.create') }}">New Department</a>
                     <table class="table table-hover table-bordered align-middle">
                         <thead>
                           <tr>
