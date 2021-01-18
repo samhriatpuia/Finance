@@ -23,9 +23,21 @@
                             <tr>
                                 <th scope="row">{{ $department->id }}</th>
                                 <td>{{ $department->department_name }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-success btn-sm "> <i class="fas fa-pen-square mr-2 fa-lg float-center icon_at_center" ></i></button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm"> <i class="fas fa-calendar-times mr-2 fa-lg icon_at_center"></i></button>
+                                <td class="flex flex-row">
+                                    <a type="button" class="btn btn-outline-success btn-sm" href="{{ route('departments.edit',$department->id) }}"> 
+                                        <i class="fas fa-pen-square mr-2 fa-lg float-center icon_at_center" ></i>
+                                    </a>
+                                   
+                                    
+                                    <form action="{{ route('departments.destroy',$department->id) }}" method="POST" class="ml-2 mr-2">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">
+                                            <i class="fas fa-calendar-times mr-2 fa-lg icon_at_center">
+                                            </i>
+                                        </button>
+                                    </form>
+                                    
                                     <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-location-arrow fa-lg icon_at_center" style="padding-right:7px"></i></button>
                                 </td>
                                

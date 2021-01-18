@@ -32,7 +32,7 @@ class DepartmentController extends Controller
             ]);
             Department::create($request->all());
             
-            $department=Department::all()->paginate(10);
+            $departments=Department::paginate(15);
             
             return view('dashboard',compact('departments'))->with('success','New Department is added successfully!');
     }
@@ -56,11 +56,9 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        $village=Village::findOrFail($id);
-        $tehsil=Tehsil::all();
-        $districts=District::all();
-        $villages=Village::orderBy('district')->paginate(10);
-        return view('village.edit', compact('villages','village','districts','tehsil'));
+        $department=Department::findOrFail($id);
+        
+        return view('department.edit', compact('department'));
     }
 
     /**
@@ -73,19 +71,16 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'tehsil' => 'required',
-            'district' => 'required',
-            'contact'=>'required',
+            'department_name' => 'required',
+            
             ]);
-        $update = ['name' => $request->name,'tehsil'=>$request->tehsil, 'district'=>$request->district, 'contact'=>$request->contact];
-        Village::where('id',$id)->update($update);
+        $update = ['department_name' => $request->department_name];
+        Department::where('id',$id)->update($update);
 
-        $tehsil=Tehsil::all();
-        $districts=District::all();
-        $villages=Village::orderBy('district')->paginate(10);
-        return redirect()->route('villages.index',compact('tehsil','districts','villages'))
-            ->withSuccess('Great! Village updated successfully');
+       
+        $departments=Department::paginate(15);
+        return redirect()->route('departments.index',compact('departments'))
+            ->with('success','Department is updated!');
     }
 
     /**
@@ -96,7 +91,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        Village::where('id',$id)->delete();
-        return back()->withDelete(' Village is Deleted successfully!');
+        Department::where('id',$id)->delete();
+        return back()->with('delete','Department is Deleted !');
     }
 }
