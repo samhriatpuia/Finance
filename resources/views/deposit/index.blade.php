@@ -2,8 +2,12 @@
     <div class="py-12">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8" style="padding-top:20px">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <h3 class="ml-4 mt-3" style="color: rgba(59, 130, 246, 0.5)">{{ $department->department_name}}</h3>
-                <table class="table-fixed table-bordered m-3 container-fluid">
+                <div style="display: flex;justify-content: space-between">
+                    <h3 class="ml-4 mt-3" style="color: rgba(59, 130, 246, 0.5)">{{ $department->department_name}}</h3>
+                    <a class="btn btn-primary btn-sm mb-3 float-right mt-3 mr-2" href="{{ route('deposits.create',$department->id) }}">New Transaction</a>
+                </div>
+                
+                <table class="table-fixed table-bordered m-3 container-fluid ">
                     <thead>
                         <tr>
                             <th>File No</th>

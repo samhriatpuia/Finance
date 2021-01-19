@@ -16,9 +16,10 @@ class DepositController extends Controller
         return view('deposit.index',compact('department','deposits'));
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('deposit.create');
+        $department=Department::findOrFail($id);
+        return view('deposit.create',compact('department'));
     }
 
     /**
@@ -35,12 +36,16 @@ class DepositController extends Controller
             'misc'=>'required',
             'message'=>'required',
             'release_date'=>'required',
-            ]);
-            Department::create($request->all());
+            'balance'=>'required',
+            'department_id'=>'required',
+        ]);
+        Deposit::create($request->all());
             
-            $departments=Department::paginate(15);
-            
-            return view('dashboard',compact('departments'))->with('success','New Department is added successfully!');
+        $department=Department::findOrFail($id);
+        // $deposit=Deposit::where('department_id',$id)->latest()->first();
+        // dd($deposit->id);
+        $deposits=Deposit::where('department_id',$id)->paginate(15);
+        return view('deposit.index',compact('department','deposits'));
     }
 
     /**
