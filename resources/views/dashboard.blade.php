@@ -38,7 +38,7 @@
                                         </button>
                                     </form>
                                     
-                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-location-arrow fa-lg icon_at_center" style="padding-right:7px"></i></button>
+                                    <a type="button" class="btn btn-outline-primary btn-sm" href="{{ route('deposits.index',$department->id) }}"><i class="fas fa-location-arrow fa-lg icon_at_center" style="padding-right:7px"></i></a>
                                 </td>
                                
                                    
