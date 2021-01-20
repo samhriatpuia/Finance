@@ -26,7 +26,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DepartmentCo
 
 Route::group(['middleware' => ['auth']], function () { 
     Route::resource('departments',DepartmentController::class);
-    Route::get('/deposits/{id}',[DepositController::class,'index'])->name('deposits.index');
-    Route::get('/deposits/create/{id}',[DepositController::class,'create'])->name('deposits.create');
+    Route::resource('deposits',DepositController::class);
+    Route::get('/deposits/mainindex/{id}',[DepositController::class,'mainindex'])->name('deposits.mainindex');
+    Route::get('/deposits/maincreate/{id}',[DepositController::class,'maincreate'])->name('deposits.maincreate');
+    // Route::post('/deposits/save',[DepositController::class,'store'])->name('deposits.store');
+    // Route::delete('/deposits/delete/{id}',[DepositController::class,'destroy'])->name('deposits.destroy');
     // Route::post('departments/store',[DepartmentController::class,'store'])->name('departments.store');
 });

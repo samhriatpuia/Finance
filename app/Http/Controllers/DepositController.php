@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
+use Redirect;
 
 class DepositController extends Controller
 {
-    public function index($id)
+    public function mainindex($id)
     {
         $department=Department::findOrFail($id);
-        // $deposit=Deposit::where('department_id',$id)->latest()->first();
-        // dd($deposit->id);
-        $deposits=Deposit::where('department_id',$id)->paginate(15);
+        $deposits=Deposit::where('department_id',$id)->paginate(7);
         return view('deposit.index',compact('department','deposits'));
     }
 
-    public function create($id)
+    public function maincreate($id)
     {
         $department=Department::findOrFail($id);
         return view('deposit.create',compact('department'));
@@ -39,12 +38,14 @@ class DepositController extends Controller
             'balance'=>'required',
             'department_id'=>'required',
         ]);
+        // dd($request->file_number);
         Deposit::create($request->all());
             
-        $department=Department::findOrFail($id);
+        $department=Department::where('id',$request->department_id)->first();
+        // dd($department);
         // $deposit=Deposit::where('department_id',$id)->latest()->first();
         // dd($deposit->id);
-        $deposits=Deposit::where('department_id',$id)->paginate(15);
+        $deposits=Deposit::where('department_id',$request->department_id)->paginate(7);
         return view('deposit.index',compact('department','deposits'));
     }
 
@@ -67,9 +68,9 @@ class DepositController extends Controller
      */
     public function edit($id)
     {
-        $department=Department::findOrFail($id);
+        $deposit=Deposit::findOrFail($id);
         
-        return view('department.edit', compact('department'));
+        return view('deposit.edit', compact('deposit'));
     }
 
     /**
@@ -82,16 +83,32 @@ class DepositController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'department_name' => 'required',
+            'date' => 'required',
+            'file_number'=>'required',
+            'misc'=>'required',
+            'message'=>'required',
+            'release_date'=>'required',
+            'balance'=>'required',
+            'department_id'=>'required',
             
-            ]);
-        $update = ['department_name' => $request->department_name];
-        Department::where('id',$id)->update($update);
+        ]);
+        $update = [
+            'date' => $request->date,
+            'file_number'=>$request->date,
+            'misc'=>$request->misc,
+            'message'=>$request->message,
+            'release_date'=>$request->release_date,
+            'balance'=>$request->balance,
+            'department_id'=>$request->department_id,
+        ];
+        Deposit::where('id',$id)->update($update);
 
-       
-        $departments=Department::paginate(15);
-        return redirect()->route('departments.index',compact('departments'))
-            ->with('success','Department is updated!');
+        
+        // dd($request->department_id);
+        $department=Department::where('id',$request->department_id)->first();
+        // dd($department->department_name);
+        $deposits=Deposit::where('department_id',$request->department_id)->paginate(7);
+        return view('deposit.index',compact('department','deposits'));
     }
 
     /**
@@ -102,7 +119,7 @@ class DepositController extends Controller
      */
     public function destroy($id)
     {
-        Department::where('id',$id)->delete();
-        return back()->with('delete','Department is Deleted !');
+        Deposit::where('id',$id)->delete();
+        return back()->with('delete','Deposit detail is Deleted !');
     }
 }
