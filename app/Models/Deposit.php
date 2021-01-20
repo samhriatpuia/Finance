@@ -10,6 +10,6 @@ class Deposit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date', 'file_number', 'misc','message','release_date','balance','department_id',
+        'particulars', 'department', 'challan_number','create_date','challan_amount','release_amount','release_date','balance','department_id',
     ];
 }

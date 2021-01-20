@@ -15,12 +15,14 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
-            $table->string('date',50);
-            $table->string('file_number',50);
-            $table->string('misc',50);
-            $table->text('message');
+            $table->string('particulars',150);
+            $table->string('department',50);
+            $table->string('challan_number',50);
+            $table->string('create_date',50);
+            $table->string('challan_amount',50);
+            $table->string('release_amount',50);
             $table->string('release_date',50);
-            $table->string('balance',50);
+            $table->string('balance',100);
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
         });
