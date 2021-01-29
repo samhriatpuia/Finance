@@ -19,10 +19,11 @@ class CreateDepositsTable extends Migration
             $table->string('department',50);
             $table->string('challan_number',50);
             $table->string('create_date',50);
-            $table->string('challan_amount',50);
-            $table->string('release_amount',50);
-            $table->string('release_date',50);
-            $table->string('balance',100);
+            $table->integer('challan_amount');
+            $table->integer('release_amount')->default(0);
+            $table->string('release_date',50)->default("NULL");
+            $table->integer('carry')->default(0);
+            $table->integer('balance')->default(0);
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
         });

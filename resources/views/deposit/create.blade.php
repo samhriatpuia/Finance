@@ -10,16 +10,16 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">Date</label>
-                                        <input type="date" class="form-control" name="date">
-                                        <div class="form-text">Enter Date</div>
+                                        <label class="form-label">Particulars</label>
+                                        <input type="text" class="form-control" name="particulars">
+                                        <div class="form-text">Enter particulars</div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">File Number</label>
-                                        <input name="file_number" type="text" class="form-control" >
-                                        <div class="form-text">Enter file number</div>
+                                        <label class="form-label">Department Name</label>
+                                        <input name="department" type="text" class="form-control" value="{{ $department->department_name }}">
+                                        
                                     </div>
                                 </div>
                               
@@ -29,37 +29,70 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">Release Date</label>
-                                        <input type="date" class="form-control" name="release_date">
-                                        <div class="form-text">Enter Release Date</div>
+                                        <label class="form-label">Challan Number</label>
+                                        <input type="text" class="form-control" name="challan_number">
+                                        <div class="form-text">Enter Challan Number</div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">Balance</label>
-                                        <input type="text" class="form-control" name="balance">
-                                        <div class="form-text">Enter Balance</div>
+                                        <label class="form-label">Creation Date</label>
+                                        <input type="date" class="form-control" name="create_date">
+                                        <div class="form-text">Enter Creation date</div>
                                     </div>
                                 </div>
                               
                             </div>
                         </div>
-                        
-                        <div class="mb-3 ml-2 mr-2">
-                            <label class="form-label">Misellinous</label>
-                            <input type="text" class="form-control" name="misc">
-                            <div class="form-text">Enter Misellinous</div>
+                        <div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="mb-3 ml-2 mr-2">
+                                        <label class="form-label">Challan Amount</label>
+                                        <input type="text" class="form-control" name="challan_amount">
+                                        <div class="form-text">Enter Challan Amount</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    {{-- <div class="mb-3 ml-2 mr-2">
+                                        <label class="form-label">Released Amount</label>
+                                        <input type="text" class="form-control" name="release_amount"></textarea>
+                                       
+                                        <div class="form-text">Enter Release Amount</div>
+                                    </div> --}}
+                                </div>
+                              
+                            </div>
+                        </div>
+                       
+                        <div>
+                            {{-- <div class="row">
+                                <div class="col-sm">
+                                    <div class="mb-3 ml-2 mr-2">
+                                        <label class="form-label">Release Date</label>
+                                        <input type="date" class="form-control" name="release_date"></textarea>
+                                       
+                                        <div class="form-text">Enter Release Date</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="mb-3 ml-2 mr-2">
+                                        <label class="form-label">Balance</label>
+                                        <input type="text" class="form-control" name="balance"></textarea>
+                                       
+                                        <div class="form-text">Enter Balance</div>
+                                    </div>
+                                </div>
+                                
+                            </div> --}}
                         </div>
                         
-                        <div class="mb-3 ml-2 mr-2">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" style="height: 100px" name="message"></textarea>
-                            {{-- <label for="floatingTextarea2">Message</label> --}}
-                            <div class="form-text">Enter Message</div>
-                        </div>
                         
 
+                        
                        
+                        
+
                         <input type="text" value="{{ $department->id }}" class="ml-2 mr-2" name="department_id"><br>
                         <button type="submit" class="btn btn-primary ml-2 mr-2">Submit</button>
                     </div>

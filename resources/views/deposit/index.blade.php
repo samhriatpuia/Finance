@@ -10,11 +10,13 @@
                 <table class="table-fixed table-bordered m-3 container-fluid ">
                     <thead>
                         <tr>
-                            <th>File No</th>
-                            <th>Misc</th>
-                            <th>Entry Date</th>
+                            <th>Particulars</th>
+                            <th>Department</th>
+                            <th>Challan No</th>
+                            <th>Date</th>
+                            <th>Challan Amount</th>
+                            <th>Release Amount</th>
                             <th>Release Date</th>
-                            <th class="w-3/6">Detail</th>
                             <th>Balance</th>
                             <th class="ml-3">Action</th>
                         </tr>
@@ -23,15 +25,16 @@
                         <tr>
                             @foreach ($deposits as $deposit)
                             <tr>
-                                <td scope="row">{{ $deposit->file_number }}</td>
-                                <td><div class="ml-1" style="font-size:15px">{{ $deposit->misc }}</td>
-                                <td style="font-size:15px">{{ $deposit->date }}</div></td>
-                                <td style="font-size:15px">{{ $deposit->release_date }}</td>
+                                <td scope="row">{{ $deposit->particulars }}</td>
+                                <td><div class="ml-1" style="font-size:15px">{{ $deposit->department }}</td>
+                                <td style="font-size:15px">{{ $deposit->challan_number }}</div></td>
+                                <td style="font-size:15px">{{ $deposit->create_date }}</td>
                                 <td>
-                                    <small>  
-                                        <div class="ml-1">{{ $deposit->message }}</div>
-                                    </small>
+                                    <div class="ml-1">{{ $deposit->challan_amount }}</div>
                                 </td>
+                                <td style="font-size:15px">{{ $deposit->release_amount }}</td>
+                                <td style="font-size:15px">{{ $deposit->release_date }}</td>
+                                
                                 <td>{{ $deposit->balance }}</td>
                                 <td style="display: flex; justify-content:start">
                                     <div>
@@ -48,6 +51,9 @@
                                                 </i>
                                             </button>
                                         </form>
+                                    </div>
+                                    <div>
+                                        <a type="button" class="btn btn-outline-primary btn-sm mt-2 ml-2" href="{{ route('deposits.mainindex',$department->id) }}"><i class="fas fa-location-arrow fa-lg icon_at_center" style="padding-right:5px"></i></a>
                                     </div>
                                 </td>    
                             </tr>

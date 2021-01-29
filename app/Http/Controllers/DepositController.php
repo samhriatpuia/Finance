@@ -30,15 +30,16 @@ class DepositController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required',
-            'file_number'=>'required',
-            'misc'=>'required',
-            'message'=>'required',
-            'release_date'=>'required',
-            'balance'=>'required',
+            'particulars'=>'required', 
+            'department'=>'required',
+            'challan_number'=>'required',
+            'create_date'=>'required',
+            'challan_amount'=>'required',
+            
+            
             'department_id'=>'required',
         ]);
-        // dd($request->file_number);
+        // dd($request);
         Deposit::create($request->all());
             
         $department=Department::where('id',$request->department_id)->first();
@@ -83,20 +84,24 @@ class DepositController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'date' => 'required',
-            'file_number'=>'required',
-            'misc'=>'required',
-            'message'=>'required',
+            'particulars'=>'required', 
+            'department'=>'required',
+            'challan_number'=>'required',
+            'create_date'=>'required',
+            'challan_amount'=>'required',
+            'release_amount'=>'required',
             'release_date'=>'required',
             'balance'=>'required',
             'department_id'=>'required',
             
         ]);
         $update = [
-            'date' => $request->date,
-            'file_number'=>$request->date,
-            'misc'=>$request->misc,
-            'message'=>$request->message,
+            'particulars'=>$request->particulars, 
+            'department'=>$request->department,
+            'challan_number'=>$request->challan_number,
+            'create_date'=>$request->create_date,
+            'challan_amount'=>$request->challan_amount,
+            'release_amount'=>$request->release_amount,
             'release_date'=>$request->release_date,
             'balance'=>$request->balance,
             'department_id'=>$request->department_id,
