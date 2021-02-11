@@ -8,7 +8,7 @@
                     @method('PATCH')
                     <div class="form-group">
                         <label for="exampleInputEmail1">Department Name</label>
-                        <input type="text" class="form-control" name="department_name" value="{{ $department->department_name }}">
+                        <input type="text" class="form-control" name="name" value="{{ $department->name }}">
                         <small id="emailHelp" class="form-text text-muted">Edit department name and click 'Update Button'</small>
                     </div>
                     {{-- <div class="form-group">

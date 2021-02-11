@@ -26,8 +26,9 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->name);
         $request->validate([
-            'department_name' => 'required',
+            'name' => 'required',
             'abbreviation'=>'required|unique:departments',
             ]);
             Department::create($request->all());
@@ -71,10 +72,10 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'department_name' => 'required',
+            'name' => 'required',
             'abbreviation'=>'required|unique:departments',
             ]);
-        $update = ['department_name' => $request->department_name, 'abbreviation'=>$request->abbreviation];
+        $update = ['name' => $request->department_name, 'abbreviation'=>$request->abbreviation];
         Department::where('id',$id)->update($update);
 
        

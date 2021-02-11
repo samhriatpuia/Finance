@@ -68,7 +68,7 @@
                                        
                                         <td>{{ $withdraw->balance }}</td>
                                         <td >
-                                            <div class="grid grid-cols-7 gap-4">
+                                            <div class="grid grid-flow-col md:grid-flow-col">
                                                 <div class="...">
                                                     <a type="button" class="btn btn-outline-success btn-sm" href="{{ route('withdraws.edit',$withdraw->id) }}"> 
                                                         <i class="fas fa-pen-square " ></i>
@@ -84,6 +84,11 @@
                                                     </button>
                                                     </form>
                                                    
+                                                </div>
+                                                <div>
+                                                    <a type="button" class="btn btn-outline-success btn-sm" href="{{ route('withdraws.word',$withdraw->id) }}"> 
+                                                        <i class="far fa-file-word" > </i>
+                                                    </a>
                                                 </div>
                                                
                                             </div>

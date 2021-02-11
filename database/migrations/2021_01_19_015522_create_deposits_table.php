@@ -19,9 +19,9 @@ class CreateDepositsTable extends Migration
             $table->string('department',50);
             $table->string('challan_number',50);
             $table->string('create_date',50);
-            $table->float('challan_amount');
-            $table->float('withdrawn_amount');
-            $table->float('balance');
+            $table->double('challan_amount');
+            $table->double('withdrawn_amount');
+            $table->double('balance');
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
         });

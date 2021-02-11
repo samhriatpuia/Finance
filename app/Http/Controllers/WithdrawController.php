@@ -151,8 +151,71 @@ class WithdrawController extends Controller
      */
     public function destroy($id)
     {
+
         $withdraw=Withdraw::findOrFail($id);
+        $deposit=Deposit::find($withdraw->deposit_id);
+
+        $deposit_balance=$deposit->balance+$withdraw->release_amount;
+        $deposit_withdrawn_amount=$deposit->withdrawn_amount-$withdraw->release_amount;
+
+        // dd($deposit_balance);
+        $deposit->update(['withdrawn_amount'=>$deposit_withdrawn_amount, 'balance'=>$deposit_balance]);
         $withdraw->delete();
+
         return back()->with('delete','Withdraw detail is Deleted !');
+    }
+    
+
+    public function word($id)
+    {
+        $withdraw=Withdraw::findOrFail($id);
+        $deposit=Deposit::findOrFail($withdraw->deposit_id);
+        $dept=Department::where('id',$deposit->department_id)->first();
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+
+        $section = $phpWord->addSection();
+        $phpWord->setDefaultFontSize(13);
+
+        $description = "\t \t \t \t ID.NO.FIN(EA):_____/20 <w:br/>\t \t \t \t Dt.____________ <w:br/>
+        \t \t \t \t \t \t \t \t $withdraw->release_memo
+                        <w:br/>
+                        <w:br/>
+                        Finance Department (EA) agrees to the proposal of  $dept->name Department  for release of fund amounting to Rs.$withdraw->release_amount (Rupees ____________________________________________________ only) 
+                        for $deposit->particulars from K.Deposit/Deposit-III under Challan No.$deposit->challan_number Dt.$deposit->create_date .
+                        <w:br/>
+                        <w:br/>
+                        <w:br/>
+                        <w:br/>
+                        <w:br/>
+                                                                             Under Secretary,<w:br/>
+                                                                            Finance Deptt.(EA)<w:br/><w:br/>
+Secretary, <w:br/>
+$dept->name Deptt.<w:br/><w:br/><w:br/>
+Copy to:<w:br/>
+        The Treasury Officer,___________________________ for information.
+        <w:br/>
+        <w:br/>
+        <w:br/>
+        <w:br/>
+        <w:br/>
+                                                                             Under Secretary,<w:br/>
+                                                                            Finance Dept. (EA)                                             
+                                                                            
+                        ";
+
+
+        // $section->addImage("https://www.itsolutionstuff.com/frontTheme/images/logo.png");
+        $section->addText($description);
+
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        try {
+            $objWriter->save(storage_path($deposit->challan_number.$withdraw->release_date.'.docx'));
+        } catch (Exception $e) {
+        }
+
+
+        return response()->download(storage_path($deposit->challan_number.$withdraw->release_date.'.docx'));
     }
 }

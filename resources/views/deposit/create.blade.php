@@ -19,7 +19,7 @@
                                 <div class="col-sm">
                                     <div class="mb-3 ">
                                         <label class="form-label">Department Name</label>
-                                        <input name="department" type="text" class="form-control form-control{{($errors->first('department_name') ? 'is-dangerous' : '')}}" value="{{ $department->department_name }}">
+                                        <input name="department" type="text" class="form-control form-control{{($errors->first('department_name') ? 'is-dangerous' : '')}}" value="{{ $department->name }}">
                                         <div class="form-text">Department Name</div>
                                         <p class="help" style="color:red">{{ $errors->first('department_name') }}</p>
                                     </div>

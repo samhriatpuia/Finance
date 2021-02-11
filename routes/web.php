@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('withdraws/main/{id}',[WithdrawController::class,'index'])->name('withdraws.main');
     Route::get('withdraws/main/create/{id}',[WithdrawController::class,'create'])->name('withdraws.main.create');
     Route::resource('withdraws',WithdrawController::class);
-    
+    Route::get('withdraws/word/{id}',[WithdrawController::class,'word'])->name('withdraws.word');
     // Route::post('/deposits/save',[DepositController::class,'store'])->name('deposits.store');
     // Route::delete('/deposits/delete/{id}',[DepositController::class,'destroy'])->name('deposits.destroy');
     // Route::post('departments/store',[DepartmentController::class,'store'])->name('departments.store');

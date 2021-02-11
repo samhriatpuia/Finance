@@ -23,7 +23,7 @@
                             @foreach ($departments as $department)
                             <tr>
                                 <th scope="row">{{ $department->id }}</th>
-                                <td>{{ $department->department_name }}</td>
+                                <td>{{ $department->name }}</td>
                                 <td>{{ $department->abbreviation }}</td>
                                 <td class="flex flex-row">
                                     <a type="button" class="btn btn-outline-success btn-sm" href="{{ route('departments.edit',$department->id) }}"> 

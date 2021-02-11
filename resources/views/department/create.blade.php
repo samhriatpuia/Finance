@@ -8,7 +8,7 @@
                     @method('POST')
                     <div class="form-group">
                         <label for="exampleInputEmail1">Department Name</label>
-                        <input type="text" class="form-control" name="department_name">
+                        <input type="text" class="form-control" name="name">
                         <small id="emailHelp" class="form-text text-muted">Enter department name and click 'Add Button'</small>
                     </div>
 
