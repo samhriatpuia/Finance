@@ -32,11 +32,11 @@ class DepositController extends Controller
         $request->validate([
             'particulars'=>'required', 
             'department'=>'required',
-            'challan_number'=>'required',
+            'challan_number'=>'required|unique:deposits',
             'create_date'=>'required',
             'challan_amount'=>'required',
-            
-            
+            'withdrawn_amount'=>'required',
+            'balance'=>'required',
             'department_id'=>'required',
         ]);
         // dd($request);
@@ -89,9 +89,9 @@ class DepositController extends Controller
             'challan_number'=>'required',
             'create_date'=>'required',
             'challan_amount'=>'required',
-            'release_amount'=>'required',
-            'release_date'=>'required',
+           
             'balance'=>'required',
+            'withdrawn_amount'=>'required',
             'department_id'=>'required',
             
         ]);
@@ -101,9 +101,8 @@ class DepositController extends Controller
             'challan_number'=>$request->challan_number,
             'create_date'=>$request->create_date,
             'challan_amount'=>$request->challan_amount,
-            'release_amount'=>$request->release_amount,
-            'release_date'=>$request->release_date,
             'balance'=>$request->balance,
+            'withdrawn_amount'=>$request->withdrawn_amount,
             'department_id'=>$request->department_id,
         ];
         Deposit::where('id',$id)->update($update);

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Withdraw extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'department_name',
-        'abbreviation',
+        'release_amount','release_date','balance','deposit_id',
     ];
 }

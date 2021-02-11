@@ -15,6 +15,7 @@
                           <tr>
                             <th scope="col">SI</th>
                             <th scope="col">Department Name</th>
+                            <th>Abbreviation</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <th scope="row">{{ $department->id }}</th>
                                 <td>{{ $department->department_name }}</td>
+                                <td>{{ $department->abbreviation }}</td>
                                 <td class="flex flex-row">
                                     <a type="button" class="btn btn-outline-success btn-sm" href="{{ route('departments.edit',$department->id) }}"> 
                                         <i class="fas fa-pen-square mr-2 fa-lg float-center icon_at_center" ></i>

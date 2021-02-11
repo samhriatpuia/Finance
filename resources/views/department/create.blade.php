@@ -11,6 +11,12 @@
                         <input type="text" class="form-control" name="department_name">
                         <small id="emailHelp" class="form-text text-muted">Enter department name and click 'Add Button'</small>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Abbreviation</label>
+                        <input type="text" class="form-control" name="abbreviation">
+                        <small id="emailHelp" class="form-text text-muted">Enter abbreviation and click 'Add Button'</small>
+                    </div>
                     {{-- <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1">

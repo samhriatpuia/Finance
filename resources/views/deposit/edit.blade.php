@@ -10,16 +10,15 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">Date</label>
-                                        <input type="date" class="form-control" name="date" value="{{ $deposit->date }}">
-                                        <div class="form-text">Enter Date</div>
+                                        <label class="form-label">Particulars</label>
+                                        <input type="text" class="form-control" name="particulars" value="{{ $deposit->particulars }}">
+                                        <div class="form-text">Enter particulars</div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">File Number</label>
-                                        <input name="file_number" type="text" class="form-control" value="{{ $deposit->file_number }}">
-                                        <div class="form-text">Enter file number</div>
+                                        <label class="form-label">Department Name</label>
+                                        <input name="department" type="text" class="form-control" value="{{ $deposit->department  }}">
                                     </div>
                                 </div>
                               
@@ -29,11 +28,38 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="mb-3 ">
-                                        <label class="form-label">Release Date</label>
-                                        <input type="date" class="form-control" name="release_date" value="{{ $deposit->release_date }}">
-                                        <div class="form-text">Enter Release Date</div>
+                                        <label class="form-label">Challan Date</label>
+                                        <input type="date" class="form-control" name="create_date" value="{{ $deposit->create_date }}">
+                                        <div class="form-text">Enter Challan Date</div>
                                     </div>
                                 </div>
+                                <div class="col-sm">
+                                    <div class="mb-3 ">
+                                        <label class="form-label">Challan number</label>
+                                        <input type="text" class="form-control" name="challan_number" value="{{ $deposit->challan_number }}">
+                                        <div class="form-text">Enter Challan number</div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="mb-3 ">
+                                        <label class="form-label">Challan Amount</label>
+                                        <input type="text" class="form-control" name="challan_amount" value="{{ $deposit->challan_amount }}">
+                                        <div class="form-text">Enter Challan Amount</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="mb-3 ">
+                                        <label class="form-label">Withdrawn amount</label>
+                                        <input type="text" class="form-control" name="withdrawn_amount" value="{{ $deposit->withdrawn_amount }}">
+                                        <div class="form-text">Enter withdrawn amount</div>
+                                    </div>
+                                </div>
+                              
                                 <div class="col-sm">
                                     <div class="mb-3 ">
                                         <label class="form-label">Balance</label>
@@ -41,22 +67,9 @@
                                         <div class="form-text">Enter Balance</div>
                                     </div>
                                 </div>
-                              
                             </div>
                         </div>
-                        
-                        <div class="mb-3 ml-2 mr-2">
-                            <label class="form-label">Misellinous</label>
-                            <input type="text" class="form-control" name="misc" value="{{ $deposit->misc }}">
-                            <div class="form-text">Enter Misellinous</div>
-                        </div>
-                        
-                        <div class="mb-3 ml-2 mr-2">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" style="height: 100px" name="message">{{ $deposit->message }}</textarea>
-                            {{-- <label for="floatingTextarea2">Message</label> --}}
-                            <div class="form-text">Enter Message</div>
-                        </div>
+                       
                         
 
                        

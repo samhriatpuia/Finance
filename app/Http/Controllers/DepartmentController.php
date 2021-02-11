@@ -28,7 +28,7 @@ class DepartmentController extends Controller
     {
         $request->validate([
             'department_name' => 'required',
-        
+            'abbreviation'=>'required|unique:departments',
             ]);
             Department::create($request->all());
             
@@ -72,9 +72,9 @@ class DepartmentController extends Controller
     {
         $request->validate([
             'department_name' => 'required',
-            
+            'abbreviation'=>'required|unique:departments',
             ]);
-        $update = ['department_name' => $request->department_name];
+        $update = ['department_name' => $request->department_name, 'abbreviation'=>$request->abbreviation];
         Department::where('id',$id)->update($update);
 
        

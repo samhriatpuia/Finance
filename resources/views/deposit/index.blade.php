@@ -15,8 +15,7 @@
                             <th>Challan No</th>
                             <th>Date</th>
                             <th>Challan Amount</th>
-                            <th>Release Amount</th>
-                            <th>Release Date</th>
+                            <th>Withdrawn amount</th>
                             <th>Balance</th>
                             <th class="ml-3">Action</th>
                         </tr>
@@ -32,8 +31,9 @@
                                 <td>
                                     <div class="ml-1">{{ $deposit->challan_amount }}</div>
                                 </td>
-                                <td style="font-size:15px">{{ $deposit->release_amount }}</td>
-                                <td style="font-size:15px">{{ $deposit->release_date }}</td>
+                                <td>
+                                    <div class="ml-1">{{ $deposit->withdrawn_amount }}</div>
+                                </td>
                                 
                                 <td>{{ $deposit->balance }}</td>
                                 <td style="display: flex; justify-content:start">
@@ -53,7 +53,10 @@
                                         </form>
                                     </div>
                                     <div>
-                                        <a type="button" class="btn btn-outline-primary btn-sm mt-2 ml-2" href="{{ route('deposits.mainindex',$department->id) }}"><i class="fas fa-location-arrow fa-lg icon_at_center" style="padding-right:5px"></i></a>
+                                        <a type="button" class="btn btn-outline-primary btn-sm mt-2 ml-2" href="{{ route('withdraws.main',$deposit->id) }}">
+                                           <i class="fas fa-rupee-sign fa-lg icon_at_center"></i>
+                                          
+                                        </a>
                                     </div>
                                 </td>    
                             </tr>

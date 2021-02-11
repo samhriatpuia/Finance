@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\WithdrawController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('deposits',DepositController::class);
     Route::get('/deposits/mainindex/{id}',[DepositController::class,'mainindex'])->name('deposits.mainindex');
     Route::get('/deposits/maincreate/{id}',[DepositController::class,'maincreate'])->name('deposits.maincreate');
+
+    Route::get('withdraws/main/{id}',[WithdrawController::class,'index'])->name('withdraws.main');
+    Route::get('withdraws/main/create/{id}',[WithdrawController::class,'create'])->name('withdraws.main.create');
+    Route::resource('withdraws',WithdrawController::class);
+    
     // Route::post('/deposits/save',[DepositController::class,'store'])->name('deposits.store');
     // Route::delete('/deposits/delete/{id}',[DepositController::class,'destroy'])->name('deposits.destroy');
     // Route::post('departments/store',[DepartmentController::class,'store'])->name('departments.store');
